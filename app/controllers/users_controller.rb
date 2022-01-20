@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       #保存の成功をここで扱う。
     else
       render 'new'
+      #newアクションに直接アクセスできる
     end
   end
   
