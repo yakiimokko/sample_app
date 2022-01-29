@@ -12,6 +12,11 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/new'
     #usersコントローラーのnewアクション
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert'
+    assert_select 'div.alert-danger'
+    #"."はclass、"#"はid。↑が描画されているかというテスト
+    #https://qiita.com/naokit-dev/items/8578133f6ece5752bda5
   end
   
 end
