@@ -19,4 +19,18 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     #https://qiita.com/naokit-dev/items/8578133f6ece5752bda5
   end
   
+  test "valid signup information" do
+    get signup_path
+    assert_difference 'User.count', 1 do
+      post users_path, params: { user: { name:  "Example User",
+                                         email: "user@example.com",
+                                         password:              "password",
+                                         password_confirmation: "password" } }
+    end
+    follow_redirect!
+    #コントローラー内のredirect_to @userに従う
+    assert_template 'users/show'
+    assert_not flash.empty?
+  end
+  
 end

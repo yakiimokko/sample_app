@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)#実装は終わっていないことに注意
     if  @user.save
       redirect_to @user
+      flash[:success] = "Welcome to the Sample App!"
     else
       render 'new'
       #newアクションに直接アクセスできる
